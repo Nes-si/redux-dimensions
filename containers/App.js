@@ -17,8 +17,6 @@ function selectTodos(todos, filter) {
 
 @connect(
     state => ({
-        visibleTodos: selectTodos(state.todos, state.visibilityFilter),
-        visibilityFilter: state.visibilityFilter
     }),
     Actions
 )
@@ -33,15 +31,3 @@ export default class App extends Component {
         );
     }
 }
-
-App.propTypes = {
-    visibleTodos: PropTypes.arrayOf(PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        completed: PropTypes.bool.isRequired
-    })),
-    visibilityFilter: PropTypes.oneOf([
-        'SHOW_ALL',
-        'SHOW_COMPLETED',
-        'SHOW_ACTIVE'
-    ]).isRequired
-};
