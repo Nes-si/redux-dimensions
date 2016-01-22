@@ -28,23 +28,7 @@ export default class App extends Component {
         const {completeTodo, addTodo, setVisibilityFilter, visibleTodos, visibilityFilter } = this.props;
         return (
             <div>
-                <AddTodo
-                    onAddClick={text =>
-                        addTodo(text)
-                      }
-                />
-                <TodoList
-                    todos={visibleTodos}
-                    onTodoClick={index =>
-                       completeTodo(index)
-                      }
-                />
-                <Footer
-                    filter={visibilityFilter}
-                    onFilterChange={nextFilter =>
-                        setVisibilityFilter(nextFilter)
-                      }
-                />
+                <Dimensional />
             </div>
         );
     }
