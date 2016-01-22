@@ -12,5 +12,5 @@ function calc(state = {width: 1, height: 1, depth: 1}, action) {
     }
 }
 
-export default todoApp;
+export default calc;
 
