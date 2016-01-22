@@ -19,9 +19,9 @@ export default class App extends Component {
         return (
             <div>
                 <Dimensional
-                    onCalc = {dim =>
-                        calc(dim)
-                } />
+                    dim = {dim}
+                    onCalc = {calc}
+                />
                 <Output output={res}/>
             </div>
         );
