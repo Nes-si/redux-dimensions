@@ -6,22 +6,12 @@ export default class Dimensional extends Component {
     output: PropTypes.number
   }
 
-  state = {
-    output: 0
-  }
-
   render() {
     return (
       <div>
-        <input type="text" value={this.state.value} onChange={this._handleOnChange}/>
+        <input type="text" value={this.props.output}/>
       </div>
     );
-  }
-
-  _handleOnChange = (event) => {
-    this.setState({
-      output: this.state.output
-    })
   }
 
 }

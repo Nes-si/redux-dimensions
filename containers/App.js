@@ -21,7 +21,7 @@ export default class App extends Component {
                     onCalc = {dim =>
                         calc(dim)
                 } />
-                <Output />
+                <Output output={res}/>
             </div>
         );
     }
