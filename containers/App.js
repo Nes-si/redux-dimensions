@@ -11,10 +11,11 @@ import Output from '../components/Output';
     }),
     Actions
 )
+
 export default class App extends Component {
     render() {
         // Получено благодаря вызову connect():
-        const {calc } = this.props;
+        const {calc, dim, res } = this.props;
         return (
             <div>
                 <Dimensional
