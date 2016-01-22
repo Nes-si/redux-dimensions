@@ -4,16 +4,7 @@ import * as Actions from '../actions';
 import Dimensional from '../components/Dimensional';
 
 
-function selectTodos(todos, filter) {
-    switch (filter) {
-        case VisibilityFilters.SHOW_ALL:
-            return todos;
-        case VisibilityFilters.SHOW_COMPLETED:
-            return todos.filter(todo => todo.completed);
-        case VisibilityFilters.SHOW_ACTIVE:
-            return todos.filter(todo => !todo.completed);
-    }
-}
+
 
 @connect(
     state => ({
@@ -21,12 +12,16 @@ function selectTodos(todos, filter) {
     Actions
 )
 export default class App extends Component {
+    onCalc = (todos) => {
+        console.log("!!");
+    }
+
     render() {
         // Получено благодаря вызову connect():
         const {completeTodo, addTodo, setVisibilityFilter, visibleTodos, visibilityFilter } = this.props;
         return (
             <div>
-                <Dimensional />
+                <Dimensional onCalc={this.onCalc}/>
             </div>
         );
     }
