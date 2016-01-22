@@ -28,10 +28,10 @@ export default class Dimensional extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (!width || !height || !depth)
+    if (!this.state.width || !this.state.height || !this.state.depth)
       return;
 
-    this.props.onCalc({width: width, height: height, depth: depth});
+    this.props.onCalc({width: this.state.width, height: this.state.height, depth: this.state.depth});
   }
 
   render() {
