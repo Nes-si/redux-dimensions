@@ -6,8 +6,8 @@ import Output from '../components/Output';
 
 @connect(
     state => ({
-        dim: dim,
-        res: res
+        dim: state.dim,
+        res: state.res
     }),
     Actions
 )
@@ -19,7 +19,7 @@ export default class App extends Component {
             <div>
                 <Dimensional
                     onCalc = {dim =>
-                        dispatch(calc(dim))
+                        calc(dim)
                 } />
                 <Output />
             </div>
