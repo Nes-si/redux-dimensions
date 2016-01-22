@@ -9,9 +9,9 @@ export default class Dimensional extends Component {
   }
 
   state = {
-    width: this.props.dim.width,
-    height: this.props.dim.height,
-    depth: this.props.dim.depth
+    width: 1,
+    height: 1,
+    depth: 1
   }
 
   handleWidthChange = (e) => {
