@@ -8,7 +8,7 @@ export const CALC = 'CALC';
  */
 export function calc(dim) {
     return {
-        type: ADD_TODO,
+        type: CALC,
         dim
     };
 }

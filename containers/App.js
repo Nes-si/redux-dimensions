@@ -5,7 +5,10 @@ import Dimensional from '../components/Dimensional';
 import Output from '../components/Output';
 
 @connect(
-    state => (state),
+    state => ({
+        dim: dim,
+        res: res
+    }),
     Actions
 )
 export default class App extends Component {
