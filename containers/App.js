@@ -5,21 +5,19 @@ import Dimensional from '../components/Dimensional';
 import Output from '../components/Output';
 
 @connect(
-    state => ({
-    }),
+    state => (state),
     Actions
 )
 export default class App extends Component {
-    onCalc = (dim) => {
-        dispatch(calc(dim))
-    }
-
     render() {
         // Получено благодаря вызову connect():
-        const {completeTodo, addTodo, setVisibilityFilter, visibleTodos, visibilityFilter } = this.props;
+        const {calc } = this.props;
         return (
             <div>
-                <Dimensional onCalc={this.onCalc}/>
+                <Dimensional
+                    onCalc = {dim =>
+                        dispatch(calc(dim))
+                } />
                 <Output />
             </div>
         );

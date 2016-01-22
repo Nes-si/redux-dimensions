@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './containers/App';
-import todoApp from './reducers';
+import calc from './reducers';
 
-let store = createStore(todoApp);
+let store = createStore(calc);
 
 let rootElement = document.getElementById('root');
 ReactDOM.render(
