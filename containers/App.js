@@ -1,30 +1,52 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '../actions';
+import * as Actions from '../actions';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 import Footer from '../components/Footer';
 
-class App extends Component {
+
+function selectTodos(todos, filter) {
+    switch (filter) {
+        case VisibilityFilters.SHOW_ALL:
+            return todos;
+        case VisibilityFilters.SHOW_COMPLETED:
+            return todos.filter(todo => todo.completed);
+        case VisibilityFilters.SHOW_ACTIVE:
+            return todos.filter(todo => !todo.completed);
+    }
+}
+
+@connect(
+    state => ({
+        visibleTodos: selectTodos(state.todos, state.visibilityFilter),
+        visibilityFilter: state.visibilityFilter
+    }),
+    Actions
+)
+export default class App extends Component {
     render() {
         // Получено благодаря вызову connect():
-        const { dispatch, visibleTodos, visibilityFilter } = this.props;
+        const {completeTodo, addTodo, setVisibilityFilter, visibleTodos, visibilityFilter } = this.props;
         return (
             <div>
                 <AddTodo
                     onAddClick={text =>
-            dispatch(addTodo(text))
-          } />
+                        addTodo(text)
+                      }
+                />
                 <TodoList
                     todos={visibleTodos}
                     onTodoClick={index =>
-            dispatch(completeTodo(index))
-          } />
+                       completeTodo(index)
+                      }
+                />
                 <Footer
                     filter={visibilityFilter}
                     onFilterChange={nextFilter =>
-            dispatch(setVisibilityFilter(nextFilter))
-          } />
+                        setVisibilityFilter(nextFilter)
+                      }
+                />
             </div>
         );
     }
@@ -42,25 +64,4 @@ App.propTypes = {
     ]).isRequired
 };
 
-function selectTodos(todos, filter) {
-    switch (filter) {
-        case VisibilityFilters.SHOW_ALL:
-            return todos;
-        case VisibilityFilters.SHOW_COMPLETED:
-            return todos.filter(todo => todo.completed);
-        case VisibilityFilters.SHOW_ACTIVE:
-            return todos.filter(todo => !todo.completed);
-    }
-}
 
-// Какие именно props мы хотим получить из приходящего, как аргумент глобального состояния?
-// Обратите внимание: используйте https://github.com/faassen/reselect для более лучшей производительности.
-function select(state) {
-    return {
-        visibleTodos: selectTodos(state.todos, state.visibilityFilter),
-        visibilityFilter: state.visibilityFilter
-    };
-}
-
-// Оборачиваем компонент `App` для внедрения  в него функции `dispatch` и состояния
-export default connect(select)(App);
