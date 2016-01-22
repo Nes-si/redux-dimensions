@@ -10,8 +10,8 @@ import Output from '../components/Output';
     Actions
 )
 export default class App extends Component {
-    onCalc = (todos) => {
-        console.log("!!");
+    onCalc = (dim) => {
+        dispatch(calc(dim))
     }
 
     render() {
