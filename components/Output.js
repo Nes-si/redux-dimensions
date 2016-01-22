@@ -14,7 +14,6 @@ export default class Dimensional extends Component {
     return (
       <div>
         <input type="text" value={this.state.value} onChange={this._handleOnChange}/>
-        {this.state.output}
       </div>
     );
   }
