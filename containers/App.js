@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
-import AddTodo from '../components/AddTodo';
-import TodoList from '../components/TodoList';
-import Footer from '../components/Footer';
+import Dimensional from '../components/Dimensional';
 
 
 function selectTodos(todos, filter) {
@@ -63,5 +61,3 @@ App.propTypes = {
         'SHOW_ACTIVE'
     ]).isRequired
 };
-
-
